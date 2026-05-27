@@ -29,7 +29,9 @@ class Tile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.bounceIn,
       width: 60,
       height: 60,
       decoration: BoxDecoration(
@@ -81,9 +83,13 @@ class _GamePageState extends State<GamePage> {
                   ),
               ],
             ),
-            GuessInput(
-              onSubmitGuess: (_){},
-            )
+          GuessInput(
+            onSubmitGuess: (String guess) {
+              setState((){
+                _game.guess(guess);
+              });
+            },
+          ),
         ],
       ),
     );
@@ -96,6 +102,7 @@ class GuessInput extends StatelessWidget {
   final void Function(String) onSubmitGuess;
   final _textEditingController = TextEditingController();
   final _focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Row(
