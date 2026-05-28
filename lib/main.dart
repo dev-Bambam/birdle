@@ -13,7 +13,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Align(alignment: Alignment.centerLeft, child: Text('Birdle')),
+          title: Align(
+            alignment: Alignment.centerLeft, 
+            child: Text('Birdle')
+          ),
         ),
         body: Center(child: GamePage()),
       ),
@@ -54,7 +57,7 @@ class Tile extends StatelessWidget {
 }
 
 class GamePage extends StatefulWidget {
-  GamePage({super.key});
+  const GamePage({super.key});
 
   @override
   State<GamePage> createState() => _GamePageState();
